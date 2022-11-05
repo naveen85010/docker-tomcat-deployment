@@ -20,5 +20,16 @@ pipeline {
         }
       }
 
+      stage('Pushing docker image to docker hub'){
+        steps{
+            withCredentials([string(credentialsId: 'Dockerpass', variable: 'Dockerpass')]) {
+    // some block
+          sh "docker login -u marella04 -p ${Dockerpass}"
+          sh 'docker push naveen850/$JOB_NAME:v1.$BUILD_NUMBER'
+          sh 'docker push naveen850/$JOB_NAME:latest'
+      }
+        }
+      }
+
     }
 }
