@@ -9,5 +9,16 @@ pipeline {
      }
      }
     
+       
+      stage('Building docker image'){
+        steps{
+            sh 'docker build -t $JOB_NAME:v1.$BUILD_NUMBER'
+            sh 'docker tag naveen850/$JOB_NAME:v1.$BUILD_NUMBER'
+            sh 'docker tag naveen850/$JOB_NAME:latest'
+
+
+        }
+      }
+
     }
 }
