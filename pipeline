@@ -28,7 +28,7 @@ pipeline {
           sh 'docker push marella04/$JOB_NAME:v1.$BUILD_NUMBER'
           sh 'docker push marella04/$JOB_NAME:latest'
         //cleaning the docker images in docker workspaec.
-        sh 'docker rmi $(docker images -q -f)'
+        sh 'docker rmi -f $(docker images -q)'
       }
         }
       }
