@@ -36,7 +36,7 @@ pipeline {
       stage('Deploying war file to webapp'){
         steps{
             sshagent(['webapp']) {
-            sh 'ssh -o StrictHostKeyChecking=no root@172.31.40.125'
+            sh 'ssh -o StrictHostKeyChecking=no ec2-user@172.31.40.125'
             sh 'docker run -it -d --name webapp -p 9000:8080 marella04/$JOB_NAME:latest'
 
 }
